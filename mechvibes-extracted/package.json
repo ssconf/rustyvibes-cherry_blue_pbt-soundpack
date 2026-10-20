@@ -1,0 +1,39 @@
+{
+  "name": "mechvibes",
+  "productName": "Mechvibes",
+  "version": "v2.3.6",
+  "description": "Play mechanical keyboard sounds as you type.",
+  "repository": "https://github.com/hainguyents13/mechvibes",
+  "main": "src/main.js",
+  "homepage": "https://mechvibes.com",
+  "author": {
+    "name": "Hai Nguyen",
+    "email": "hainguyen.ts13@gmail.com"
+  },
+  "license": "MIT",
+  "iohook": {
+    "targets": [
+      "electron-87"
+    ],
+    "platforms": [
+      "win32",
+      "darwin",
+      "linux"
+    ],
+    "arches": [
+      "x64"
+    ]
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.10",
+    "easy-volume": "^1.1.0",
+    "electron-fetch": "^1.9.1",
+    "electron-log": "^4.4.8",
+    "electron-store": "^6.0.0",
+    "fs-extra": "^9.0.1",
+    "glob": "^7.1.6",
+    "howler": "^2.2.4",
+    "iohook": "^0.9.3",
+    "mime-types": "^2.1.35"
+  }
+}

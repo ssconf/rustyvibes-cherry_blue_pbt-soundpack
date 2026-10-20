@@ -1,0 +1,84 @@
+{
+	"$id": "https://mechvibes.com/v2/config.schema.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Soundpack Config",
+	"type": "object",
+	"properties": {
+		"id": {
+			"type": "string",
+			"description": "A unique identifier for the pack. Usually assigned by the server."
+		},
+		"name": {
+			"type": "string",
+			"description": "The name of the soundpack.",
+			"required": true
+		},
+		"default": {
+			"type": "boolean",
+			"description": "If this pack is installed by default with a fresh install of mechvibes. Readonly property set by the server.",
+			"readOnly": true
+		},
+		"key_define_type": {
+			"type": "string",
+			"description": "The type of key defines used in this soundpack.",
+			"enum": [
+				"single",
+				"multi"
+			],
+			"required": true
+		},
+		"defines": {
+			"type": "object",
+			"description": "The key definitions for this soundpack.",
+			"properties": {
+				"$index": {
+					"type": "string",
+					"description": "The keycode to define. Use iohook's keycodes.",
+					"required": true
+				},
+				"$value": {
+					"type": "object",
+					"description": "Information about the sound to play when the key is pressed.",
+					"properties": {
+						"mode": {
+							"$ref": "#/defines/mode.md",
+							"type": "string",
+							"description": "The play mode of the sound.",
+							"enum": [
+								"single",
+								"cycle",
+								"random"
+							],
+							"required": true
+						},
+						"files": {
+							"$comment": "Use only one file in single mode",
+							"type": "array",
+							"description": "The files that can play when the key is pressed.",
+							"items": {
+								"type": "string"
+							},
+							"required": true
+						},
+						"clips": {
+							"type": "array",
+							"description": "The clips that can play when the key is pressed. [start,end] format.",
+							"items": {
+								"type": "integer"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"tags": {
+			"type": "array",
+			"description": "Tags to help users find this soundpack.",
+			"items": {
+				"type": "string"
+			}
+		},
+		"$comment": "There may be additional properties which are set by the server, which are for information only and not used by the app."
+	}
+}

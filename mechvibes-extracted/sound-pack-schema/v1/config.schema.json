@@ -1,0 +1,86 @@
+{
+	"$id": "https://mechvibes.com/v1/config.schema.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Soundpack Config",
+	"type": "object",
+	"properties": {
+		"id": {
+			"type": "string",
+			"description": "A unique identifier for the pack. Usually assigned by the server."
+		},
+		"name": {
+			"type": "string",
+			"description": "The name of the soundpack.",
+			"required": true
+		},
+		"default": {
+			"type": "boolean",
+			"description": "If this pack is installed by default with a fresh install of mechvibes. Readonly property set by the server.",
+			"readOnly": true
+		},
+		"key_define_type": {
+			"type": "string",
+			"description": "The type of key defines used in this soundpack.",
+			"enum": [
+				"single",
+				"multi"
+			],
+			"required": true
+		},
+		"includes_numpad": {
+			"$comment": "Note that, this property is deprecated and will be removed in future versions, BUT it is REQUIRED for functionality.",
+			"type": "boolean",
+			"description": "If this soundpack includes numpad sounds.",
+			"deprecated": true,
+			"default": true,
+			"required": true
+		},
+		"sound": {
+			"$comment": "This property is only used when key_define_type is 'single', however it's required for 'multi' as well.",
+			"type": "string",
+			"description": "The sound file to play when a key is pressed.",
+			"examples": [
+				"sound.ogg",
+				"my_sound.mp3"
+			],
+			"deprecated": true,
+			"required": true
+		},
+		"defines": {
+			"type": "object",
+			"description": "The key definitions for this soundpack.",
+			"properties": {
+				"$index": {
+					"type": "string",
+					"description": "The keycode to define. Use iohook's keycodes.",
+					"required": true
+				},
+				"$if(key_define_type == 'multi')": {
+					"$value":{
+						"type": "string",
+						"description": "The sound file to play when this key is pressed."
+					}
+				},
+				"$if(key_define_type == 'single')": {
+					"$value":{
+						"type": "array",
+						"description": "The sound clip to play when a key is pressed.",
+						"valueNames": [
+							"start",
+							"end"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"tags": {
+			"type": "array",
+			"description": "Tags to help users find this soundpack.",
+			"items": {
+				"type": "string"
+			}
+		},
+		"$comment": "There may be additional properties which are set by the server, which are for information only and not used by the app."
+	}
+}

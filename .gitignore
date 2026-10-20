@@ -1,0 +1,11 @@
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# JavaScript dependencies and build output in the extracted Mechvibes source
+mechvibes-extracted/node_modules/
+mechvibes-extracted/dist/
+
+# Python cache
+__pycache__/
+*.py[cod]
