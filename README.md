@@ -1,6 +1,6 @@
 # RustyVibes
 
-A Mechvibes-compatible keyboard sound pack based on the **CherryMX Blue – PBT keycaps** sounds, with each mapped key exported as its own WAV file.
+A RustyVibes-compatible keyboard sound pack based on the **CherryMX Blue – PBT keycaps** sounds, with each mapped key exported as its own WAV file.
 
 ## Contents
 
